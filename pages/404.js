@@ -1,7 +1,15 @@
-export default function Error404() {
+import Link from 'next/link'
+
+export default function errorHandler() {
   return (
     <>
-      <h1>404 custom Error</h1>
+      <div className="flex flex-col bg-white text-black justify-start items-center h-screen gap-40 pt-30">
+        <h2 className="text-3xl font-extrabold">This page is not found!</h2>
+
+        <button className="bg-gray-300 rounded p-3 hover:bg-gray-200 shadow">
+          <Link href={'/'}>Go to Home</Link>
+        </button>
+      </div>
     </>
   )
 }
