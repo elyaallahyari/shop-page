@@ -1,7 +1,9 @@
+import MediaLibrary from '@/components/media-library'
+
 export default function Media() {
   return (
-    <>
-      <h1>Media</h1>
-    </>
+    <div className="flex flex-col justify-center items-center w-screen h-screen p-3">
+      <MediaLibrary />
+    </div>
   )
 }

@@ -1,7 +1,9 @@
+import AddProductForm from '@/components/form-add-product'
+
 export default function AddProduct() {
   return (
-    <>
-      <h1>Add Product</h1>
-    </>
+    <div className="flex flex-col justify-center items-center">
+      <AddProductForm />
+    </div>
   )
 }

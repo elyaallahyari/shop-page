@@ -1,7 +1,7 @@
 export default function ProductId() {
   return (
     <>
-      <h1>Product id: </h1>
+      <h1>شماره محصول: </h1>
     </>
   )
 }
