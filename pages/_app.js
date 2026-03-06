@@ -28,11 +28,10 @@ const farsiFont = localFont({
 })
 
 export default function App({ Component, pageProps }) {
+  const getLayout = Component.getLayout ?? ((page) => page)
   return (
     <main className={farsiFont.className}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
     </main>
   )
 }

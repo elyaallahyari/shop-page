@@ -8,4 +8,15 @@
   .label {
     @apply font-semibold;
   }
+
+  .menu_item {
+    @apply hover:bg-gray-200 w-40 max-w-40 p-3 rounded;
+  }
+}
+
+.width_adjusted_content {
+  width: calc(100% - 200px);
+}
+.height_adjusted_content {
+  height: calc(100% - 70px);
 }
