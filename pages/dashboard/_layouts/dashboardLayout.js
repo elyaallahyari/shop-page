@@ -1,7 +1,5 @@
-import ProductList from '@/components/product-list'
 import DashboardSidebar from '@/components/sidebar-dashboard'
 import MenuButton from '@/ui/menu-button'
-import Link from 'next/link'
 import { useState } from 'react'
 
 export default function DashboardLayout({ children }) {
