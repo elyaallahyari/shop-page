@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 export default function DashboardLayout({ children }) {
   const [showMenu, setShowMenu] = useState(false)
-  console.log(showMenu)
+
   return (
     <div className="flex flex-row justify-start items-center w-screen height_adjusted_content">
       <DashboardSidebar isVisible={showMenu} />

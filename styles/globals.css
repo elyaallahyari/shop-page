@@ -12,6 +12,22 @@
   .menu_item {
     @apply hover:bg-gray-200 w-40 max-w-40 p-3 rounded;
   }
+
+  .notification_blue {
+    @apply bg-blue-50 rounded shadow border-r-3 border-blue-500 p-3 w-full;
+  }
+
+  .notification_red {
+    @apply bg-red-50 rounded shadow border-r-3 border-red-500 p-3 w-full;
+  }
+
+  .notification_green {
+    @apply bg-green-50 rounded shadow border-r-3 border-green-500 p-3 w-full;
+  }
+
+  .notification_yellow {
+    @apply bg-yellow-50 rounded shadow border-r-3 border-yellow-500 p-3 w-full;
+  }
 }
 
 .width_adjusted_content {
