@@ -82,7 +82,6 @@ export default function Dashboard() {
     }
   }
 
-  // بستن مودال
   const handleCloseModal = () => {
     setIsModalOpen(false)
     setEditingProduct(null)
