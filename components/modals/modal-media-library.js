@@ -15,14 +15,12 @@ export default function MediaLibraryModal({
 
   return (
     <>
-      {/* پس‌زمینه تیره برای کلیک خارج از مودال */}
       <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={onClose}></div>
 
-      {/* کانتینر اصلی مودال */}
       <section className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
         <div
           className="bg-white rounded-lg shadow-2xl w-full max-w-4xl h-[80vh] flex flex-col pointer-events-auto overflow-hidden"
-          onClick={(e) => e.stopPropagation()} // جلوگیری از بسته شدن هنگام کلیک داخل مودال
+          onClick={(e) => e.stopPropagation()}
         >
           <div className="p-4 border-b flex justify-between items-center">
             <h3 className="text-xl font-bold">کتابخانه تصاویر</h3>

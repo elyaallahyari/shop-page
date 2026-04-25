@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import useSWRMutation from 'swr/mutation' // توجه: ایمپورت از swr/mutation
+import useSWRMutation from 'swr/mutation'
 
-// تابعی برای ارسال درخواست POST
 async function sendRequest(url, { arg }) {
-  // arg همان داده‌ای است که به trigger پاس می‌دهیم
   return fetch(url, {
     method: 'POST',
     headers: {
@@ -14,13 +12,9 @@ async function sendRequest(url, { arg }) {
 }
 
 export default function CreateMediaForm({ mutateGlobal }) {
-  // برای مدیریت ورودی‌ها از useState استفاده می‌کنیم (چون فرم سروری نیست)
   const [urlInput, setUrlInput] = useState('')
   const [message, setMessage] = useState('')
 
-  // استفاده از useSWRMutation
-  // آرگومان اول: آدرس API
-  // آرگومان دوم: تابع ارسال کننده
   const { trigger, isMutating } = useSWRMutation('http://localhost:4000/media', sendRequest)
 
   const handleSubmit = async (e) => {
@@ -28,22 +22,16 @@ export default function CreateMediaForm({ mutateGlobal }) {
     setMessage('')
 
     try {
-      // ارسال داده به سرور
       const result = await trigger({ url: urlInput })
 
-      // بررسی پاسخ سرور (طبق کد قبلی شما)
       if (!result.ok) {
-        // فرض بر این است که سرور فیلد ok را برمی‌گرداند یا وضعیت را چک می‌کنیم
-        // اگر ساختار پاسخ سرورت متفاوت است اینجا را اصلاح کن
         setMessage(result.message || 'خطایی رخ داد')
         return
       }
 
-      // اگر موفق بود
       setMessage(result.message || 'تصویر با موفقیت ارسال شد')
-      setUrlInput('') // خالی کردن اینپوت
+      setUrlInput('')
 
-      // بسیار مهم: دستور به SWR که لیست مدیا را آپدیت کند
       if (mutateGlobal) {
         mutateGlobal()
       }

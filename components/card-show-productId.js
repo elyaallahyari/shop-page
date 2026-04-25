@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function ProductidCard({ image, title, price }) {
   return (
-    <section className="flex flex-col justify-start items-start gap-15 w-200 min-h-100 border border-gray-100 rounded-md shadow p-4">
+    <section className="flex flex-col justify-start items-start gap-15 max-w-200 w-full min-h-100 border border-gray-100 rounded-md shadow p-4">
       <Link href="/">
         <BackButton />
       </Link>
