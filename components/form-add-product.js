@@ -2,6 +2,7 @@ import { useState } from 'react'
 import MediaLibraryModal from '@/components/modals/modal-media-library'
 import Image from 'next/image'
 import useSWRMutation from 'swr/mutation'
+import { GrFormAdd } from "react-icons/gr";
 
 async function sendRequest(url, { arg }) {
   return fetch(url, {
@@ -96,7 +97,7 @@ export default function AddProductForm() {
             className="flex flex-row justify-center items-center w-full input"
             onClick={() => setShowModal(!showModal)}
           >
-            +
+            <GrFormAdd />
           </div>
         </div>
 

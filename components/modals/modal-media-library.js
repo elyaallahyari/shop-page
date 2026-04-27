@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import useSWR from 'swr'
+import { CgClose } from 'react-icons/cg'
+import { FaCheck } from 'react-icons/fa6'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -25,7 +27,7 @@ export default function MediaLibraryModal({
           <div className="p-4 border-b flex justify-between items-center">
             <h3 className="text-xl font-bold">کتابخانه تصاویر</h3>
             <button onClick={onClose} className="text-gray-500 hover:text-red-500 text-2xl">
-              &times;
+              <CgClose />
             </button>
           </div>
 
@@ -52,7 +54,7 @@ export default function MediaLibraryModal({
                       />
                       {isSelected && (
                         <div className="absolute top-2 right-2 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">
-                          ✓
+                          <FaCheck />
                         </div>
                       )}
                     </div>
