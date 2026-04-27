@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 import Image from 'next/image'
-import { Trash2 } from 'lucide-react'
+import { FiTrash2 } from 'react-icons/fi'
 import { useState } from 'react'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
@@ -67,7 +67,7 @@ export default function MediaLibrary() {
                   className="text-white bg-red-600 p-2 rounded-full hover:bg-red-700 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   title="حذف تصویر"
                 >
-                  <Trash2 size={20} />
+                  <FiTrash2 size={20} />
                 </button>
               </div>
             </div>
