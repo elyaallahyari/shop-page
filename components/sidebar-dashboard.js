@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { TbHome } from 'react-icons/tb'
+import { MdOutlinePermMedia } from 'react-icons/md'
 
 export default function DashboardSidebar({ isVisible }) {
   return (
@@ -13,7 +14,7 @@ export default function DashboardSidebar({ isVisible }) {
           </li>
           <li className="menu_li">
             <Link href={'/dashboard/media'} className="menu_link">
-              Media 📷
+              Media <MdOutlinePermMedia />
             </Link>
           </li>
           <li className="menu_li">
