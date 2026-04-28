@@ -8,11 +8,11 @@ export default function ProductidCard({ image, title, price }) {
       <Link href="/">
         <BackButton />
       </Link>
-      <div className="flex flex-row justify-start items-center h-42 w-full">
+      <div className="flex flex-row justify-start items-center h-42 w-full gap-2">
         {image &&
           image.map((item) => (
             <div key={item.id}>
-              <Image src={item.url} alt={item.url} width={100} height={100} />
+              <Image src={item.url} alt={item.url} width={100} height={100} className="rounded" />
             </div>
           ))}
       </div>
