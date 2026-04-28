@@ -11,13 +11,13 @@ export default function Home({ response }) {
   return (
     <div className="flex flex-col justify-start items-center p-4">
       <h1 className="font-bold text-blue-700 text-2xl">محصولات</h1>
-      <div className="flex flex-row justify-center items-start flex-wrap w-full gap-8">
+      <div className="flex flex-row justify-center items-start flex-wrap w-full gap-8 mt-5">
         {response ? (
           response.map((item) => (
             <Link
               href={`/product/${item.id}`}
               key={item.id}
-              className="p-3 flex flex-col justify-start items-center max-w-70 w-full max-h-200 h-full shadow rounded-md hover:bg-gray-50 cursor-pointer"
+              className="p-5 flex flex-col justify-start items-center max-w-70 w-full max-h-200 h-full shadow rounded-md hover:bg-gray-50 cursor-pointer gap-4"
             >
               <Image
                 src={item?.media[0]?.url}
@@ -25,11 +25,11 @@ export default function Home({ response }) {
                 height={150}
                 width={150}
                 priority
-                className="bg-transparent"
+                className="bg-transparent rounded"
               />
-              <div className="flex flex-col justify-center items-start gap-2">
-                <p> محصول: {item.title}</p>
-                <p>قیمت: {item.price}</p>
+              <div className="flex flex-col justify-center items-start gap-4">
+                <p> محصول:   {item.title}</p>
+                <p>قیمت:   {item.price} تومان</p>
                 <button className="p-2 rounded bg-green-600 hover:bg-green-500 w-full">خرید</button>
               </div>
             </Link>
