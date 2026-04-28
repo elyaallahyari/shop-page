@@ -28,8 +28,8 @@ export default function Home({ response }) {
                 className="bg-transparent rounded"
               />
               <div className="flex flex-col justify-center items-start gap-4">
-                <p> محصول:   {item.title}</p>
-                <p>قیمت:   {item.price} تومان</p>
+                <p> محصول: {item.title}</p>
+                <p>قیمت: {item.price} تومان</p>
                 <button className="p-2 rounded bg-green-600 hover:bg-green-500 w-full">خرید</button>
               </div>
             </Link>

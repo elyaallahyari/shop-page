@@ -123,7 +123,7 @@ export default function Dashboard() {
               <td>
                 <button
                   onClick={() => handleEditClick(item)}
-                  className="bg-amber-300 hover:bg-amber-400 p-2 rounded cursor-pointer w-auto"
+                  className="bg-amber-300 hover:bg-amber-400 p-1 rounded cursor-pointer"
                 >
                   ویرایش
                 </button>
@@ -131,7 +131,7 @@ export default function Dashboard() {
                 <button
                   onClick={() => handleDelete(item.id)}
                   disabled={isDeleting}
-                  className="bg-red-500 hover:bg-red-600 p-2 rounded cursor-pointer w-auto"
+                  className="bg-red-500 hover:bg-red-600 p-1 rounded cursor-pointer"
                 >
                   {isDeleting ? 'حذف...' : 'حذف'}
                 </button>
