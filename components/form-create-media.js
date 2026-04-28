@@ -12,26 +12,23 @@ async function sendRequest(url, { arg }) {
 }
 
 export default function CreateMediaForm({ mutateGlobal }) {
-  const [urlInput, setUrlInput] = useState('')
   const [message, setMessage] = useState('')
 
   const { trigger, isMutating } = useSWRMutation('http://localhost:4000/media', sendRequest)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (formData) => {
+    const formUrl = {
+      url: formData.get('url')
+    }
     setMessage('')
-
     try {
-      const result = await trigger({ url: urlInput })
+      const result = await trigger(formUrl)
 
       if (!result.ok) {
         setMessage(result.message || 'خطایی رخ داد')
         return
       }
-
       setMessage(result.message || 'تصویر با موفقیت ارسال شد')
-      setUrlInput('')
-
       if (mutateGlobal) {
         mutateGlobal()
       }
@@ -43,20 +40,11 @@ export default function CreateMediaForm({ mutateGlobal }) {
 
   return (
     <section className="flex flex-col justify-center items-center max-w-100 h-40 w-full shadow rounded-md p-3">
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col justify-center items-start w-full gap-3"
-      >
+      <form action={handleSubmit} className="flex flex-col justify-center items-start w-full gap-3">
         <label htmlFor="url" className="label">
           URL تصویر را وارد کنید:
         </label>
-        <input
-          type="text"
-          placeholder="url..."
-          value={urlInput}
-          onChange={(e) => setUrlInput(e.target.value)}
-          className="input"
-        />
+        <input type="text" name="url" placeholder="url..." className="input" />
 
         {message && <p className="text-sm text-blue-500">{message}</p>}
 
