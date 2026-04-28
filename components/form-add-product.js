@@ -2,7 +2,8 @@ import { useState } from 'react'
 import MediaLibraryModal from '@/components/modals/modal-media-library'
 import Image from 'next/image'
 import useSWRMutation from 'swr/mutation'
-import { GrFormAdd } from "react-icons/gr";
+import { GrFormAdd } from 'react-icons/gr'
+import { mutate } from 'swr'
 
 async function sendRequest(url, { arg }) {
   return fetch(url, {
@@ -21,28 +22,17 @@ export default function AddProductForm() {
 
   const { trigger, isMutating } = useSWRMutation('http://localhost:4000/product', sendRequest)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const action = async (formData) => {
     setMessage('')
-
-    const formData = new FormData(e.currentTarget)
-    const title = formData.get('title')
-    const price = formData.get('price')
-
     const mediaIds = media.map((item) => item.id)
 
-    if (!title || !price) {
-      setMessage('لطفا عنوان و قیمت را وارد کنید')
-      return
+    const payload = {
+      title: formData.get('title'),
+      price: Number(formData.get('price')),
+      media: mediaIds
     }
 
     try {
-      const payload = {
-        title: title,
-        price: Number(price),
-        media: mediaIds
-      }
-
       const result = await trigger(payload)
 
       if (!result.ok) {
@@ -50,11 +40,10 @@ export default function AddProductForm() {
         return
       }
 
-      setMessage('محصول با موفقیت ساخته شد')
+      mutate()
       setMedia([])
-      e.target.reset()
+      setMessage('محصول با موفقیت ساخته شد')
     } catch (error) {
-      console.error(error)
       setMessage('خطا در ارتباط با سرور')
     }
   }
@@ -72,7 +61,15 @@ export default function AddProductForm() {
 
   return (
     <section className="flex flex-col justify-center items-center w-full max-w-200 _:flex_ :flex-col *:rounded-lg">
-      <form onSubmit={handleSubmit} className="flex flex-col max-w-100 gap-3.5 w-full">
+      <form action={action} className="flex flex-col max-w-100 gap-3.5 w-full">
+        {message && (
+          <div
+            className={`p-2 rounded text-sm ${message.includes('خطا') ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'}`}
+          >
+            {message}
+          </div>
+        )}
+
         <label className="label" htmlFor="images">
           عکس‌ها
         </label>
@@ -100,14 +97,6 @@ export default function AddProductForm() {
             <GrFormAdd />
           </div>
         </div>
-
-        {message && (
-          <div
-            className={`p-2 rounded text-sm ${message.includes('خطا') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}
-          >
-            {message}
-          </div>
-        )}
 
         <label className="label" htmlFor="title">
           عنوان محصول
