@@ -39,7 +39,7 @@ export default function CreateMediaForm({ mutateGlobal }) {
   }
 
   return (
-    <section className="flex flex-col justify-center items-center max-w-100 h-40 w-full shadow rounded-md p-3">
+    <section className="flex flex-col justify-center items-center max-w-100 h-50 w-full shadow rounded-md p-3">
       <form action={handleSubmit} className="flex flex-col justify-center items-start w-full gap-3">
         <label htmlFor="url" className="label">
           URL تصویر را وارد کنید:
