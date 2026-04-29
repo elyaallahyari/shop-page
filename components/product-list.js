@@ -4,7 +4,7 @@ export default function ProductList({ children }) {
   return (
     <section className="flex-col justify-center items-center w-full max-w-280 gap-4 relative text-sm lg:text-base">
       <table className="border border-gray-100 shadow rounded-lg w-full max-w-270 mt-15">
-        <tr className="border-b border-gray-100 *:p-1 lg:*:p-3">
+        <tr className="border-b border-gray-100 *:p-1 lg:*:p-3 bg-gray-100">
           <th>کد</th>
           <th>نام</th>
           <th>قیمت</th>
